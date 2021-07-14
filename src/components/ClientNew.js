@@ -12,6 +12,8 @@ const emptyClient = {
 
 const ClientNew = () => {
     const [form, setForm] = useState(emptyClient)
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const user = fb.auth().currentUser;
@@ -19,8 +21,7 @@ const ClientNew = () => {
 
         createClient(form.dni, form.name, form.codigo, user.uid);
 
-
-        console.log("click formulario");
+        // console.log("click formulario");
     }
 
     const handleChange = (e) => {
@@ -29,8 +30,14 @@ const ClientNew = () => {
             [e.target.name]: e.target.value
         })
 
-        console.log("completando datos")
+        // console.log("completando datos")
     }
+
+    const handleClickAdd = () => {
+        console.log("agregar cliente")
+        
+    }
+
     console.log(form)
     return (
         <>
@@ -55,9 +62,11 @@ const ClientNew = () => {
 
                     <section className="container-center">
                         <p></p>
-                        <button className="button-red" type="submit">
-                            AGREGAR CLIENTE
-                        </button>
+                        {<button className="button-red" type="submit" onClick={handleClickAdd}>
+                            REALIZAR COMPRA
+                        </button>} : {<button className="button-red" type="submit" onClick={handleClickAdd}>
+                            AGREGAR USUARIO
+                        </button>}
                     </section>
                 </Form>
 

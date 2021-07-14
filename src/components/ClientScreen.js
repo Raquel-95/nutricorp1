@@ -8,6 +8,7 @@ import ClientNew from './ClientNew.js';
 const ClientScreen = () => {
     const [otherClient, setOtherClient] = useState(false)
     const [listClient, setListClient] = useState([])
+    const [client, setClient] = useState(false)
 
     const getAllClients = () => {
         getClients(setListClient);
@@ -24,6 +25,11 @@ const ClientScreen = () => {
         }
 
     }
+
+    const handelCheckme = () => {
+        setClient(!client);
+    }
+
     useEffect(() => {
         getAllClients()
     }, [])
@@ -45,7 +51,8 @@ const ClientScreen = () => {
                                 custom
                                 inline
                                 label="Para mi"
-                                type={type}
+                                type="checkbox"
+                                onChange={handelCheckme}
                                 id={`custom-inline-${type}-1`}
                             />
                             <Form.Check
